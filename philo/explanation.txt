@@ -1,0 +1,99 @@
+Philosophers Explanation
+
+1. Check the arguments given. (input_checker)
+
+    First, we have to check that the number of arguments is between 4 and 5. Then, for each argument we have to check that:
+
+    - Only contain digits
+    - The number of philosophers is between 1 and 250
+    - All the numbers must be between 0 and MAX_INT
+
+2. Initialize the main struct (table) of the programme.
+
+    After checking that all the arguments are valid, now it's time to initialize the struct using the arguments. We have to:
+
+    - Use malloc to allocate in memory the size of table.
+
+    - Assign the arguments values to the table property (n_of_philo, t_to_die, t_to_eat,t_to_sleep, n_philo_meals).
+
+    - Use malloc to allocate in memory the size of philosophers (for that we will create a pointer to an arrary of structs where each struct (philo) contains all the philosopher's properties).
+        
+        For each philosopher we need to:
+
+        - Init a mutex to lock the struct when it is time to eat.
+        - Assign the variables: table (pointer to the main struct), id (tho identify each philopher) and times_ate (to know how many times each philopher has eaten).
+        - Assign th forks to the philosophers:
+            + Each philosopher have 2 forks assigned (even philosophers will take the left fork first to avoid deadlocks).
+
+    - Initialize all the global mutexes:
+        + Init one mutex for each fork (one fork for each philosopher).
+        + Init one mutex to stop the simulation.
+        + Init one mutex to write and modify the data.
+    - Set the sim_stop boolean to false, if it is true the simulation will stop.
+
+
+3.  Start the simulation
+
+Once it's all initialized, we have checked the inputs and assigned it to the struct's variables it's time to start the game simulation. We will have to:
+
+- Set the start time (get_time_in_ms() + some delay to wait the creation of all philosopher threads).
+
+- Create one thread for each philosopher and assigned the "actions" function to it.
+
+    How does "actions" function work?
+    
+    + The "actions" funtion receive as an argument the philosopher struct which is being called. 
+    + Set the last meal to the start time (we have to lock the mutex -> meal_time_lock, modify and unlock it)
+    + Wait until start_time to let all thread syncronized and start at the same time the execution.
+    + If the number of philosophers is 1, it will only take the fork and wait until he dies.
+    + For cases where there is more than 1 philosopher:
+        - Even philosophers will start thinking to let odd philosophers take tha forks and eat.
+        - While the simulation still running philosophers will repeat eat_sleep_routine and think_routine.
+
+            *eat_sleep_routine:
+                - Philosopher will try to take two forks and when he got them, he will start eating.
+                - Save the actual time as the last meal of that philosopher
+                - Then wait until the philosopher finish eating (philo_sleep funciton with the t_to_eat value)
+                - Check if the simulation has stop and if not, increase by one the time that the philopher has eaten.
+                - Right after the philospher have finished eating, he will go to sleep (philo_sleep funciton with the t_to_sleep value)
+                
+            *think_routine: 
+                - Time to think is calculated taking (t_to_die) - (time from last meal) and that - (t_to_eat), that resault will be divided by 2 to make sure the philosopher has time to take the forks in case they are taken.
+                - If time to think < 0, time to think will be 0.
+                - If time to think = 0 and silent is true, time to think will be 1 (this is used at the begining for the even philosophers that will start thinking and avoid the deadlock)
+                - If time to think > 600, time to think will be 200 to avoid philosophers to stay thinking for an excesive amoount of time.
+                - Then wait until the philosopher finish thinking (philo_sleep funciton with the t_to_think value)
+
+- Create a general thread for the grim_reaper function.
+
+    How does "grim_reaper" function work?
+
+    + The grim_reaper function have the purpose to keep track of each philosopher and stop the simulation when one of them must be killed or when all philosophers ate enough times.
+    + First, set the sim_stop bool = false to let the simulation run until it changes to = true.
+    + Wait until start time with sim_start_delay() to syncronize with all threads.
+    + Then, it waits until a end condition reach cheking if end_condition_reached() function return true or false:
+
+        *end_condition_reached: 
+            - Set the variable all_ate_enough = true.
+            - Check each philospher and look if he must be killed (kill_philo function), it basically checks if the time from the last meal is greater than the t_to_die. If that happens, it will set the sim_stop bool = true and write the status that the philosopher died.
+            - Check if all the philosophers are enough, if not, set all_ate_enough = false.
+            - When all philosophers have eaten enough it will set the sim_stop bool = true.
+
+4. Stop the simulation
+
+The purpose of this function is to eliminate the correct way all the data and threads that we have used.
+
+- Use pthread_join() with each of the philosphers threads to block the main thread and let each of this finish his execution.
+
+- Do the same wiht the grim reaper thread in case this was created.
+
+- Destroy all mutexes with destroy_mutexes()
+
+- Free the table (main struct): free each philosopher struct, forks_locks and other items.
+
+
+
+
+
+
+
