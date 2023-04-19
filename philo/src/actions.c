@@ -6,7 +6,7 @@
 /*   By: antmoren <antmoren@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 14:34:12 by antmoren          #+#    #+#             */
-/*   Updated: 2023/04/11 05:07:56 by antmoren         ###   ########.fr       */
+/*   Updated: 2023/04/19 18:35:33 by antmoren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	think_routine(t_philo *philo, bool silent)
 	philo_do_action(philo->table, t_to_think);
 }
 
-void	*lone_philo_routine(t_philo *philo)
+void	*one_philo_routine(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->table->fork_locks[philo->fork[0]]);
 	write_status(philo, false, GOT_FORK_1);
@@ -91,7 +91,7 @@ void	*actions(void *data)
 	if (philo->table->t_to_die == 0)
 		return (NULL);
 	if (philo->table->n_of_philo == 1)
-		return (lone_philo_routine(philo));
+		return (one_philo_routine(philo));
 	else if (philo->id % 2)
 		think_routine(philo, true);
 	while (has_simulation_stopped(philo->table) == false)

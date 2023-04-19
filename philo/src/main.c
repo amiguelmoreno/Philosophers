@@ -6,7 +6,7 @@
 /*   By: antmoren <antmoren@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 20:28:37 by antmoren          #+#    #+#             */
-/*   Updated: 2023/04/17 17:53:08 by antmoren         ###   ########.fr       */
+/*   Updated: 2023/04/19 18:35:50 by antmoren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	stop_simulation(t_table *table)
 	}
 	if (table->n_of_philo > 1)
 		pthread_join(table->grim_reaper, NULL);
-	destroy_mutexes(table);
+	destroy_all_mutexes(table);
 	free_table(table);
 }
 

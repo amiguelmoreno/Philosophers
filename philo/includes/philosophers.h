@@ -6,7 +6,7 @@
 /*   By: antmoren <antmoren@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 12:19:43 by antmoren          #+#    #+#             */
-/*   Updated: 2023/04/17 17:56:59 by antmoren         ###   ########.fr       */
+/*   Updated: 2023/04/19 18:35:48 by antmoren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int						integer_atoi(char *str);
 int						error_failure(char *message, t_table *table);
 void					*error_null(char *message, t_table *table);
 void					*free_table(t_table *table);
-void					destroy_mutexes(t_table *table);
+void					destroy_all_mutexes(t_table *table);
 
 /* Init */
 t_table					*init_table(int ac, char **av, int i);

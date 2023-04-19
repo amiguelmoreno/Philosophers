@@ -6,7 +6,7 @@
 /*   By: antmoren <antmoren@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 09:36:19 by antmoren          #+#    #+#             */
-/*   Updated: 2023/04/11 05:03:55 by antmoren         ###   ########.fr       */
+/*   Updated: 2023/04/19 18:35:51 by antmoren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	error_failure(char *message, t_table *table)
 	return (0);
 }
 
-void	destroy_mutexes(t_table *table)
+void	destroy_all_mutexes(t_table *table)
 {
 	unsigned int	i;
 
