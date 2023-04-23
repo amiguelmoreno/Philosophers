@@ -6,7 +6,7 @@
 #    By: antmoren <antmoren@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/16 12:19:44 by antmoren          #+#    #+#              #
-#    Updated: 2023/03/29 15:23:25 by antmoren         ###   ########.fr        #
+#    Updated: 2023/04/23 21:35:44 by antmoren         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS	= 	main.c				\
 			input_checker.c 	\
 			init.c 				\
 			actions.c 			\
-			grim_reaper.c		\
+			doctor.c			\
 			time.c				\
 			display.c 			\
 			

@@ -6,7 +6,7 @@
 /*   By: antmoren <antmoren@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 20:28:37 by antmoren          #+#    #+#             */
-/*   Updated: 2023/04/19 18:35:50 by antmoren         ###   ########.fr       */
+/*   Updated: 2023/04/23 21:35:04 by antmoren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ bool	start_simulation(t_table *table)
 	}
 	if (table->n_of_philo > 1)
 	{
-		if (pthread_create(&table->grim_reaper, NULL, &grim_reaper, table) != 0)
+		if (pthread_create(&table->grim_reaper, NULL, &doctor, table) != 0)
 			return (error_failure(ERR_THREAD, table));
 	}
 	return (true);

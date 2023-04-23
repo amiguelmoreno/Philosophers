@@ -6,7 +6,7 @@
 /*   By: antmoren <antmoren@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 14:55:58 by antmoren          #+#    #+#             */
-/*   Updated: 2023/04/11 05:03:44 by antmoren         ###   ########.fr       */
+/*   Updated: 2023/04/23 21:34:43 by antmoren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static bool	end_condition_reached(t_table *table)
 	return (false);
 }
 
-void	*grim_reaper(void *data)
+void	*doctor(void *data)
 {
 	t_table	*table;
 

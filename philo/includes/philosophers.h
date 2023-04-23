@@ -6,7 +6,7 @@
 /*   By: antmoren <antmoren@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 12:19:43 by antmoren          #+#    #+#             */
-/*   Updated: 2023/04/19 18:35:48 by antmoren         ###   ########.fr       */
+/*   Updated: 2023/04/23 21:35:11 by antmoren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void					destroy_all_mutexes(t_table *table);
 t_table					*init_table(int ac, char **av, int i);
 
 /* Grim Reaper */
-void					*grim_reaper(void *data);
+void					*doctor(void *data);
 bool					has_simulation_stopped(t_table *table);
 
 /* Actions */
