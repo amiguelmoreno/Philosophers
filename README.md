@@ -13,12 +13,6 @@
 	- [Step 3: Initialization and allocation](#step3)
 	- [Step 4: Structuring the philo's routine, the supervisor and the monitor](#step4)
 	- [Step 5: Clearing the memory](#step5)
-4. [Utils Functions](#utilsfunc)
-	- [clear data](#clear_data)
-	- [ft_exit](#ft_exit)
-	- [error](#error)
-	- [get_time](#get_time)
-	- [ft_usleep](#ft_usleep)
 
 
 <div align='center'><h1><a name='General_idea'>General idea</a></h1></div>
@@ -29,7 +23,6 @@ a thread is and how multithreading works, I'll leave a couple of wikipedia refer
 <li><a href='https://en.wikipedia.org/wiki/Thread_(computing)'>Thread</a></li>
 <li><a href='https://en.wikipedia.org/wiki/Multithreading_(computer_architecture)'>Multi Threading</a></li>
 </ul>
-Another raccomandation is to read the subject before starting, I'll leave a link also to that: <a href='https://cdn.intra.42.fr/pdf/pdf/51354/en.subject.pdf'>subject</a>.<br>
 Now that we know what we have to do we can start explaining the general idea that I've applied in this project. First of all we have to immagine a round table, N num of 
 philosophers sits around it and each of them brings a fork and let's say that they place it on the table on their right (doesn't really change if they place it on the right or left).
 At this point we know that a philosopher can do three things: eat, think or sleep; but in order to eat he has to pick two forks (the one on his right and the one on his left).
