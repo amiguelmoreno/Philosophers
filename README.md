@@ -30,7 +30,7 @@ Let's use a picture to have a more concrete idea of what we are talking about:
 <br><br>
 <a href='https://en.wikipedia.org/wiki/Dining_philosophers_problem#/media/File:An_illustration_of_the_dining_philosophers_problem.png'><img src='https://user-images.githubusercontent.com/59456000/198906008-4135d5d2-de53-4a8b-9c24-744181f04851.png' width='275' heigth='275'></img></a>
 <br><br>
-Since I'm not a big fan of philosophy i don't know a single name one these guys up here so I'll give them some more familiar names and starting from the bottom left
+Since I'm not a big fan of philosophy I don't know a single name one these guys up here so I'll give them some more familiar names and starting from the bottom left
 one they will be: Roberto Legno, Thiago, Marcello, Lapo Raspanti and Rekkless.<br>
 <p>Let's say that Roberto Legno wants to eat, so he picks his right and left fork, at this point we notice that Rekkless can't eat since Roberto Legno picked his right fork which was shared with Rekkless; this might seem a little obvious but keep in mind this situation because the main problem of this project is how to organize the eating action of the philosophers.<br>
 Probably the first solution that came to your mind is to simply make the odd and even philos eat separately, well we are not going to do that, it's too hard coded and we would loose the meaning of the project, <i><b>philos have to organize by themselves.</b></i></br>
